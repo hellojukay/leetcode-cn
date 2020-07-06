@@ -4,11 +4,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # count 0 
+        j = 0
         for index in range(len(nums)):
             if nums[index] != 0 :
                 continue
-            j = index + 1
+            if j <= index :
+                j = index + 1
             # 找到不为 0 的数来补充
             while j < len(nums):
                 if nums[j] != 0:
