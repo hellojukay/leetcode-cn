@@ -2,7 +2,7 @@
 from typing import List
 class Solution:
     def mix(self, str1 :str,str2: str) ->str:
-        if len(str1) == 0 || len(str2) == 0
+        if len(str1) == 0 or len(str2) == 0:
             return ""
         dic = {}
         result = ""
