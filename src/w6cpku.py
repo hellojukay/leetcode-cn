@@ -32,3 +32,5 @@ class Solution:
         list = self.toList(root, [])
         if not root:
             return root
+        self.setNode(root, list)
+        return root
