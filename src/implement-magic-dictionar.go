@@ -1,3 +1,5 @@
+package main
+
 type MagicDictionary struct {
 	dictionary *[]string
 }
