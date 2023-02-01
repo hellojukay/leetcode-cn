@@ -82,3 +82,44 @@ func mergeList(list1 *ListNode, list2 *ListNode) *ListNode {
 	}
 	return head
 }
+
+func mergeKLists2(lists []*ListNode) *ListNode {
+
+	var head *ListNode
+	var tail *ListNode
+	for len(lists) > 0 {
+		index := findMin(lists)
+		if index < 0 {
+			break
+		}
+		if head == nil {
+			head = lists[index]
+			tail = head
+		} else {
+			tail.Next = lists[index]
+			tail = tail.Next
+		}
+		lists[index] = lists[index].Next
+		if lists[index] == nil {
+			lists = append(lists[:index], lists[index+1:]...)
+		}
+	}
+	return head
+}
+
+func findMin(lists []*ListNode) int {
+	var index = -1
+	for i := range lists {
+		if lists[i] != nil {
+			if index < 0 {
+				index = i
+				continue
+			}
+			if index >= 0 && lists[i].Val < lists[index].Val {
+				index = i
+			}
+		}
+
+	}
+	return index
+}

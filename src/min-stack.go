@@ -22,7 +22,6 @@ func (this *MinStack) Push(val int) {
 		min = val
 	}
 	this.stack = append(this.stack, element{data: val, currentMint: min})
-
 }
 
 func (this *MinStack) Pop() {
