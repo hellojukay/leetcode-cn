@@ -30,3 +30,15 @@ func swapPairs(head *ListNode) *ListNode {
 	// 第二个节点是头节点
 	return tmp
 }
+
+func swapPairs2(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var first = head.Val
+	var second = head.Next.Val
+	head.Val = second
+	head.Next.Val = first
+	swapPairs2(head.Next.Next)
+	return head
+}
