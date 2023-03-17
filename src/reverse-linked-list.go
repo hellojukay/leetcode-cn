@@ -20,22 +20,12 @@ func reverseList(head *ListNode) *ListNode {
 		return nil
 	}
 	var p = head
-	var result *ListNode
-	for {
-		if p == nil {
-			break
-		}
-		if result == nil {
-			result = p
-			p = p.Next
-			result.Next = nil
-			continue
-		} else {
-			var tmp = p.Next
-			p.Next = result
-			result = p
-			p = tmp
-		}
+	var newHead *ListNode
+	for p != nil {
+		var next = p.Next
+		p.Next = newHead
+		newHead = p
+		p = next
 	}
-	return result
+	return newHead
 }
