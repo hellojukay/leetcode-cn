@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("vim-go")
@@ -13,41 +15,23 @@ type ListNode struct {
 
 // https://leetcode-cn.com/problems/palindrome-linked-list/
 func isPalindrome(head *ListNode) bool {
-	var r = reverse(head)
+	var stack []int
 	for {
 		if head == nil {
 			break
 		}
-		if r.Val != head.Val {
-			return false
-		}
-		r = r.Next
-		head = head.Next
-	}
-	return true
-}
-func reverse(root *ListNode) *ListNode {
-	if root == nil {
-		return nil
-	}
-	var head *ListNode
-	for {
-		if root == nil {
-			break
-		}
-		if head == nil {
-			head = &ListNode{
-				Val: root.Val,
-			}
-			root = root.Next
+		if len(stack) == 0 {
+			stack = append(stack, head.Val)
+			head = head.Next
 			continue
 		}
-		var tmp = &ListNode{
-			Val: root.Val,
+		top := stack[len(stack)-1]
+		if head.Val == top {
+			stack = stack[:len(stack)-1]
+		} else {
+			stack = append(stack, head.Val)
 		}
-		tmp.Next = head
-		head = tmp
-		root = root.Next
+		head = head.Next
 	}
-	return head
+	return r.String() == reverse(r.String())
 }
